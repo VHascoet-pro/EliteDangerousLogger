@@ -5,16 +5,23 @@
 
 #include <iostream>
 
-boost::filesystem::path CentralizedLogPath;
-
 void WindowsLogger(){const boost::filesystem::path WinLogPath = "C:\\Users\\%USER%\\Saved Games\\Frontier Developments\\Elite Dangerous";}
 
-void LinuxLogger(boost::filesystem::path GamePath){}
+void LinuxLogger(boost::filesystem::path GamePath){
+  
+}
 
 int main(int argc, char* argv[1]){
+  while(!boost::filesystem::exists(boost::filesystem::current_path("/logs"))){
+    std::cout<<"The initial log folder doesn't exist, creating now...";
+    boost::filesystem::create_directory(boost::filesystem::current_path(),"/logs");
+  }
+  boost::filesystem::path initLogFolder = boost::filesystem::current_path("/logs");
+  
   boost::filesystem::path gameLoc;
   char host;
-  std::cout<<"Is your game hosted on (W)indows or (P)roton (Linux) ? ";
+  
+  std::cout<<"\n\nIs your game hosted on (W)indows or (P)roton (Linux) ? ";
   std::cin>>host;
   while(toupper(host) == 'W' || toupper(host) == 'P'){
     if(toupper(host) == 'W') {
