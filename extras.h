@@ -3,10 +3,10 @@
 #include <boost/filesystem/path.hpp>
 
 namespace CustomParsers {
-  class EliteParser{
-    public:
-      boost::filesystem::path JournalPathFinder(boost::filesystem::path GamePath, char OperatingSystem_selected);
-  };
+        class EliteParser{
+                public:
+                boost::filesystem::path JournalPathFinder(boost::filesystem::path GamePath, char OperatingSystem_selected);
+        };
 }
 
 #endif
