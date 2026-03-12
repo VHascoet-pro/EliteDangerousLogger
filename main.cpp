@@ -3,6 +3,7 @@
 #include <boost/filesystem/operations.hpp>
 #include <boost/filesystem/path.hpp>
 
+#include <boost/iterator/iterator_categories.hpp>
 #include <iostream>
 using std::cout, std::cin;
 using namespace boost::filesystem;
@@ -13,16 +14,16 @@ path InitLog_Archive_Directory;
 
 /**
  Main function for copying the log files
- @param GamePath is the game path for both Windows or Linux (used only for
- Linux)
+ @param GamePath is the game path for both Windows or Linux (used only for Linux)
  @param host to specify the OS used for the parser
- @param LocalLogPath is the path of the Log path (./logs relatively to the main
- program)
+ @param LocalLogPath is the path of the Log path (./logs relatively to the main program)
 */
 void Logger(path GamePath, char host, path LocalLogPath) {
         CustomParsers::EliteParser eP;
         const path GameLogPath = eP.JournalPathFinder(GamePath, host);
-        for (directory_iterator it(GameLogPath); it != directory_iterator(); ++it) {}
+        for (directory_iterator it(GameLogPath); it != directory_iterator(); ++it) {
+                if(){}
+        }
 }
 
 int main(int argc, char *argv[1]) {
@@ -38,8 +39,7 @@ int main(int argc, char *argv[1]) {
         }
 /**
 @param InitLog_Archive_Directory The path where to store the logs
-@function Logger The function that will to the operations on the journalfiles
-(log files)
+@function Logger The function that will to the operations on the journalfiles (log files)
 */
         if (toupper(host) == 'W') {
                 InitLog_Archive_Directory = current_path().append("\\EliteLogs");
