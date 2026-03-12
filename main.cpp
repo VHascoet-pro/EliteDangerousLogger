@@ -1,15 +1,15 @@
-#include <boost/filesystem/path.hpp>
-#include <iostream>
 #include <boost/filesystem.hpp>
+#include <boost/filesystem/operations.hpp>
+#include <boost/filesystem/path.hpp>
 #include <boost/filesystem/directory.hpp>
 
-void WindowsLogger(){
-  const boost::filesystem::path WinLogPath = "C:\\Users\\%USER%\\Saved Games\\Frontier Developments\\Elite Dangerous";
-}
+#include <iostream>
 
-void LinuxLogger(boost::filesystem::path GamePath){
-  
-}
+boost::filesystem::path CentralizedLogPath;
+
+void WindowsLogger(){const boost::filesystem::path WinLogPath = "C:\\Users\\%USER%\\Saved Games\\Frontier Developments\\Elite Dangerous";}
+
+void LinuxLogger(boost::filesystem::path GamePath){}
 
 int main(int argc, char* argv[1]){
   boost::filesystem::path gameLoc;
