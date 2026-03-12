@@ -4,19 +4,16 @@
 #include <boost/filesystem/path.hpp>
 #include <boost/filesystem/directory.hpp>
 
+#include <cstddef>
 #include <iostream>
 using std::cout, std::cin;
 using namespace boost::filesystem;
 
 path InitLog_Archive_Directory;
 
-void WindowsLogger(){
-  const path WinLogPath = "C:\\Users\\%USER%\\Saved Games\\Frontier Developments\\Elite Dangerous";
-}
-
-void LinuxLogger(path GamePath){
+void Logger(path GamePath, char host, path LocalLogPath){
   CustomParsers::EliteParser eP;
-  const path LinLogPath = eP.JournalPathFinder(GamePath);
+  const path GameLogPath = eP.JournalPathFinder(GamePath, host);
 }
 
 int main(int argc, char* argv[1]){
@@ -38,7 +35,7 @@ int main(int argc, char* argv[1]){
       cout<<"The initial log archive folder does not exist, creating now...";
       create_directory(InitLog_Archive_Directory);
     }
-    WindowsLogger();
+    Logger(gameLoc, host, InitLog_Archive_Directory);
   }
   else if(toupper(host) == 'P')
   {
@@ -55,6 +52,6 @@ int main(int argc, char* argv[1]){
       cout<<"This is not a valid path, please enter a correct Linux Path : ";
       cin>>gameLoc;
     }
-    LinuxLogger(gameLoc);
+    Logger(gameLoc, host, InitLog_Archive_Directory);
   } 
 }

@@ -5,7 +5,7 @@
 namespace CustomParsers {
   class EliteParser{
     public:
-      boost::filesystem::path JournalPathFinder(boost::filesystem::path GamePath);
+      boost::filesystem::path JournalPathFinder(boost::filesystem::path GamePath, char OperatingSystem_selected);
   };
 }
 
